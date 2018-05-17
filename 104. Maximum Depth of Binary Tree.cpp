@@ -23,6 +23,7 @@ public:
         int nLeft = 0;
         int nRight = 0;
 
+        // 只要找到，则加一层
         nLeft = maxDepth(root->left) + 1;
         nRight = maxDepth(root->right) + 1;
         
