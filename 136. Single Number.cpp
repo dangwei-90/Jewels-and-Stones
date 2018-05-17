@@ -1,6 +1,15 @@
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
+        // from discuss
+        int nret = 0;
+        for(auto val : nums)
+        {
+            nret ^= val;
+        }
+        return nret;
+        
+        /*  my first solution
         unordered_map<int, int> map;
         for(int n = 0; n < nums.size(); n++)
         {
@@ -14,5 +23,6 @@ public:
                 return vec;
             }
         }
+        */
     }
 };
