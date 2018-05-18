@@ -1,0 +1,19 @@
+class Solution {
+public:
+    char findTheDifference(string s, string t) {
+        for(int n = 0; n < t.size(); n++)
+        {   
+            int nfind = s.find(t[n]);
+            if(nfind == -1)
+            {
+                return t[n];
+            }
+            else
+            {
+                s[nfind] = 'A';
+            }
+        }
+        
+        return NULL;
+    }
+};
