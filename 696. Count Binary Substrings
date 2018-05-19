@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int countBinarySubstrings(string s) {
+        int nCount = 0; // 记录符合的字符串
+        int nNow = 1;   // 当前重复元素统计，至少一个
+        int nPre = 1;   // 之前重复元素统计
+        
+        for(int n = 0; n < s.size()-1; n++)
+        {
+            // 和下一个元素对比
+            if(s[n] == s[n+1])
+            {
+                nNow ++;
+            }
+            else
+            {
+                nPre = nNow;
+                nNow = 1;
+            }
+            if(nPre >= nNow)
+            {
+                nCount++;
+            }
+        }
+        
+        return nCount;           
+    }
+};
