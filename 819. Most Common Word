@@ -1,0 +1,76 @@
+class Solution {
+public:
+    string mostCommonWord(string paragraph, vector<string>& banned) {
+        int nMost = 0;
+        string strMost; 
+        // 排除干扰截断项
+        for(int n = 0; n < paragraph.size(); n++)
+        {
+            if (paragraph[n] == '!' || paragraph[n] == '?' || paragraph[n] == '\'' ||
+                paragraph[n] == ',' || paragraph[n] == ';' || paragraph[n] == '.')
+            {
+                paragraph[n] = ' ';
+                continue;
+            }
+
+            if (isalpha(paragraph[n]))
+            {
+                paragraph[n] = tolower(paragraph[n]);
+            }
+
+        }
+        
+        // 截取字符串
+        unordered_map<string , int> map;
+        
+        bool end = true;
+        int nTemp = 0;
+        int nfind = 0;
+        while(end)
+        {
+            // 从nTemp开始第一个空格
+            nfind = paragraph.find(" ", nTemp);         
+            string str = paragraph.substr(nTemp, nfind - nTemp);
+            bool bBan = false;
+            for(int m = 0; m < banned.size(); m++)
+            {
+                if(banned[m] == str)
+                {
+                    bBan = true;
+                    break;
+                }
+            }
+            if(bBan == false)
+            {
+                map[str] ++;
+                if(map[str] > nMost)
+                {
+                    nMost = map[str];
+                    strMost = str;
+                }
+            }
+            
+            // 判断连续多空格的情况
+            for(int n = nfind; n < paragraph.size(); n++)
+            {
+                if(paragraph[n] == ' ')
+                {
+                    nfind ++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            
+            nTemp = nfind;
+            
+            if(nfind == -1)
+            {
+                end = false;
+            }
+        }
+        
+        return strMost;
+    }
+};
