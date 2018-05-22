@@ -5,7 +5,7 @@ public:
         for(int n = 0; n < nums.size(); n++)
         {
             map[nums[n]] ++;
-            if(map[nums[n] == 2])
+            if(map[nums[n]] == 2)
             {
                 return true;
             }
