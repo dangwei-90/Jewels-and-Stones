@@ -1,6 +1,22 @@
 class Solution {
 public:
+    
     bool isAnagram(string s, string t) {
+        // 使用sort排序
+        sort(s.begin(), s.end());
+        sort(t.begin(), t.end());
+        
+        if(s == t)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
+        // my solution 
+        /*
         if(s.size() != t.size())
         {
             return false;
@@ -23,5 +39,6 @@ public:
         }
         
         return true;
+        */
     }
 };
