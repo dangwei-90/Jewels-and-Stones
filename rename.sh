@@ -1,3 +1,3 @@
-for i in ./*.cpp;
-do mv "$i" "${i%.cpp}.md";
+for i in ./*.md;
+do mv "$i" "${i%.md}";
 done
